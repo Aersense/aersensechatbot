@@ -7,6 +7,9 @@ function Chatbox({ handleClose, open }) {
     const [faq, setFaq] = useState(false);
     const [startBtn, setStartBtn] = useState(false);
     const [botImg, setBotImg] = useState(true);
+    const [chatStarted, setChatStarted] = useState(false);
+    const [message, setMessage] = useState('');
+    const [chat, setChat] = useState([]);
 
     useEffect(() => {
         if (faq && ques < questions.length) {
@@ -31,6 +34,20 @@ function Chatbox({ handleClose, open }) {
         }, 2000);
     }, [open, botImg]);
 
+    const handleStartConversation = () => {
+        setChatStarted(true);
+        setList([]);
+        setFaq(false);
+        setStartBtn(false);
+    };
+
+    const handleSendMessage = () => {
+        if (message.trim()) {
+            setChat([...chat, { sender: 'user', text: message }]);
+            setMessage('');
+        }
+    };
+
     return (
         <div className="fixed bottom-5 right-5 w-72 max-h-[70vh] z-50 bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="flex flex-col h-full">
@@ -44,27 +61,61 @@ function Chatbox({ handleClose, open }) {
                 </div>
 
                 <div className="p-4 overflow-y-auto flex-grow">
-                    <div className="mb-4">
-                        <img src="./bot.svg" alt="bot" className="mx-auto w-16 h-16 text-orange-400" />
-                    </div>
-                    <div>
-                        <h2 className="text-lg font-semibold mb-2">Frequently Asked Questions</h2>
-                        {faq && (
-                            <ul className="space-y-2">
-                                {list.length > 0 && list.map((question, key) => (
-                                    <li key={key} className="flex items-center">
-                                        <span className="mr-2">⦿</span>
-                                        {question}
-                                    </li>
+                    {!chatStarted ? (
+                        <>
+                            <div className="mb-4">
+                                <img src="./bot.svg" alt="bot" className="mx-auto w-16 h-16 text-orange-400" />
+                            </div>
+                            <div>
+                                <h2 className="text-lg font-semibold mb-2">Frequently Asked Questions</h2>
+                                {faq && (
+                                    <ul className="space-y-2">
+                                        {list.length > 0 && list.map((question, key) => (
+                                            <li key={key} className="flex items-center">
+                                                <span className="mr-2">⦿</span>
+                                                {question}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                            {startBtn && (
+                                <div className="mt-4 text-center">
+                                    <button
+                                        className="bg-orange-600 text-white py-2 px-4 rounded-md"
+                                        onClick={handleStartConversation}
+                                    >
+                                        Start a New Conversation
+                                    </button>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <div className="flex flex-col h-full">
+                            <div className="flex-grow overflow-y-auto">
+                                {chat.map((msg, index) => (
+                                    <div key={index} className={`p-2 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+                                        <span className={`inline-block p-2 rounded-md ${msg.sender === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}>
+                                            {msg.text}
+                                        </span>
+                                    </div>
                                 ))}
-                            </ul>
-                        )}
-                    </div>
-                    {startBtn && (
-                        <div className="mt-4 text-center">
-                            <button className="bg-orange-600 text-white py-2 px-4 rounded-md">
-                                Start a New Conversation
-                            </button>
+                            </div>
+                            <div className="mt-4">
+                                <input
+                                    type="text"
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    className="w-full p-2 border rounded-md"
+                                    placeholder="Type your message..."
+                                />
+                                <button
+                                    className="bg-orange-600 text-white py-2 px-4 rounded-md mt-2"
+                                    onClick={handleSendMessage}
+                                >
+                                    Send
+                                </button>
+                            </div>
                         </div>
                     )}
                 </div>
