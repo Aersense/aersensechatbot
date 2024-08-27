@@ -6,6 +6,6 @@ export const questions = [
         title: "How do I pay my Credit card bill?"
     },
     {
-        title: "How can I get my Account Statement?"
+        title: "How stay safe in an area with pollution"
     }
 ]

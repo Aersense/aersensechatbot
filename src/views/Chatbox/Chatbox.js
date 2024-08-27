@@ -49,18 +49,17 @@ function Chatbox({ handleClose, open }) {
     };
 
     return (
-        <div className="fixed bottom-5 right-5 w-72 max-h-[70vh] z-50 bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className={`fixed bottom-5 right-5 w-70 z-50 bg-white rounded-lg h-full shadow-lg overflow-hidden ${chatStarted ? 'max-h-[90vh]' : 'max-h-[70vh]'}`}>
             <div className="flex flex-col h-full">
                 <div className="bg-orange-600 text-white p-4 text-center">
-                    <h1 className="text-xl font-semibold">Aersense</h1>
-                    <h2 className="text-lg">Hello 👋</h2>
-                    <div className="mt-2">
+                    <h1 className="text-xl font-semibold Aersense">Aersense</h1>
+                    <h2 className="text-lg Hello">Hello 👋</h2>
+                    <div className="mt-2 text-justify AersenseText">
                         <p>I am Aersense bot, a Virtual Assistant</p>
-                        <p>How may I help you today?</p>
                     </div>
                 </div>
 
-                <div className="p-4 overflow-y-auto flex-grow">
+                <div className="p-4 flex-grow overflow-y-auto">
                     {!chatStarted ? (
                         <>
                             <div className="mb-4">
@@ -101,16 +100,16 @@ function Chatbox({ handleClose, open }) {
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-4 flex items-center space-x-2">
                                 <input
                                     type="text"
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
-                                    className="w-full p-2 border rounded-md"
+                                    className="flex-grow p-2 border rounded-md"
                                     placeholder="Type your message..."
                                 />
                                 <button
-                                    className="bg-orange-600 text-white py-2 px-4 rounded-md mt-2"
+                                    className="bg-orange-600 text-white py-2 px-4 rounded-md"
                                     onClick={handleSendMessage}
                                 >
                                     Send
