@@ -55,7 +55,7 @@ function Chatbox({ handleClose, open }) {
                     <h1 className="text-xl font-semibold Aersense">Aersense</h1>
                     <h2 className="text-lg Hello">Hello 👋</h2>
                     <div className="mt-2 text-justify AersenseText">
-                        <p>I am Aersense bot, a Virtual Assistant</p>
+                        <p>I am Aero bot, a Virtual Assistant</p>
                     </div>
                 </div>
 
