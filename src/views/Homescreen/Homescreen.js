@@ -18,8 +18,26 @@ function Homescreen() {
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+        script.type = "text/javascript";
+        script.onload = () => {
+            window.voiceflow.chat.load({
+                verify: { projectID: '66996cdfb1b42c8b73adbc97' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+            });
+        };
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
     return (
-        <div id="homescreen">
+        <div id="homescreen ml-10">
             <div className="chat-box">
                 {open && <Chatbox handleClose={handleOpen} open={open} />}
             </div>
@@ -27,7 +45,7 @@ function Homescreen() {
                 <div className="tooltip">
                     Hi, how can I help you?
                 </div>
-                <button onClick={handleOpen} className='bg-[#]'>
+                <button onClick={handleOpen} className='hidden'>
                     <img src="./chat.png" alt="chat-icon" />
                 </button>
             </div>

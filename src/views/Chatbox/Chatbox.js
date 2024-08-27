@@ -34,6 +34,24 @@ function Chatbox({ handleClose, open }) {
         }, 2000);
     }, [open, botImg]);
 
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+        script.type = "text/javascript";
+        script.onload = () => {
+            window.voiceflow.chat.load({
+                verify: { projectID: '66996cdfb1b42c8b73adbc97' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+            });
+        };
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
     const handleStartConversation = () => {
         setChatStarted(true);
         setList([]);
@@ -49,7 +67,7 @@ function Chatbox({ handleClose, open }) {
     };
 
     return (
-        <div className={`fixed bottom-5 right-5 w-70 z-50 bg-white rounded-lg h-full shadow-lg overflow-hidden ${chatStarted ? 'max-h-[90vh]' : 'max-h-[70vh]'}`}>
+        <div className={`fixed bottom-5 right-5 w-full max-w-md md:max-w-lg lg:max-w-xl z-50 bg-white rounded-lg h-full md:h-3/4 lg:h-2/3 shadow-lg overflow-hidden ${chatStarted ? 'max-h-[90vh]' : 'max-h-[70vh]'}`}>
             <div className="flex flex-col h-full">
                 <div className="bg-orange-600 text-white p-4 text-center">
                     <h1 className="text-xl font-semibold Aersense">Aersense</h1>
