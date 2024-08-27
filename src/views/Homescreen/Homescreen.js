@@ -14,7 +14,7 @@ function Homescreen() {
         tooltip.classList.add('show');
         const timer = setTimeout(() => {
             tooltip.classList.remove('show');
-        }, 3000);
+        }, 5000);
         return () => clearTimeout(timer);
     }, []);
 
