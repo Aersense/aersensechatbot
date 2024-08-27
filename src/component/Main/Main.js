@@ -9,19 +9,19 @@ const Main = () => {
                 <img
                     src={logo}
                     alt="rabbit r1"
-                    className="mx-auto w- sm:w-full"
+                    className="mx-auto max-w-[370px]  sm:max-w-[650px]"
                 />
             </div>
 
-            <div className="flex-1 text-center sm:text-right mt-[-50%] sm:mt-0">
+            <div className="flex-1 text-center sm:text-right mt-[-55%] sm:mt-10">
                 <div className="text-container sm:text-justify">
-                    <h1 className="head text-4xl sm:text-6xl font-light mb-4 text-white max-w-[80%]  sm:max-w-[60%] mx-auto sm:mx-0">
+                    <h1 className="head text-4xl sm:text-6xl font-light mb-4 text-white max-w-[80%]  sm:max-w-[50%] mx-auto sm:mx-0">
                         MATAER 1
                     </h1>
-                    <p className=" head1 text-lg sm:text-2xl font-serif mb-4 text-gray-400 max-w-[80%] sm:max-w-[55%] leading-relaxed mx-auto sm:mx-0">
+                    <p className=" head1 text-lg sm:text-2xl font-serif mb-4 text-gray-400 max-w-[80%] sm:max-w-[63%] leading-relaxed mx-auto sm:mx-0">
                         your smart home companion, Powered by <span className="text-white">AERSENSE <span className="text-red-600">™</span></span>
                     </p>
-                    <p className=" head2 text-sm font-semibold text-gray-400 mb-8 max-w-[60%] sm:max-w-[35%] mx-auto sm:mx-0">
+                    <p className=" head2 text-sm font-semibold text-gray-400 mb-8 max-w-[60%] sm:max-w-[45%] mx-auto sm:mx-0">
                         ships in November 2024
                     </p>
                     <p className="text-2xl sm:text-3xl mb-2 flex justify-center sm:justify-start items-center">
