@@ -6,6 +6,7 @@ import ShowCase from './component/ShowCase/ShowCase';
 import "./fonts/BankGothicMdBT.ttf"
 import "./App.css"
 import Footer from './component/Footer/Footer';
+import Homescreen from './views/Homescreen/Homescreen';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <Main/>
       <ShowCase/>
       <Footer/>
+      <Homescreen />
+
 
     </div>
   );
