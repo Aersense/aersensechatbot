@@ -8,14 +8,7 @@ function Homescreen() {
     const handleOpen = () => {
         setOpen(!open)
     }
-
-    const openLink = () => {
-        window.open('https://github.com/neeleshio/chatbot-ui', '_blank');
-    }
-
-    const downloadFolder = () => {
-        window.open('https://github.com/neeleshio/chatbot-ui/archive/refs/heads/master.zip', '_blank');
-    }
+    
 
     return (
         <div id="homescreen">
