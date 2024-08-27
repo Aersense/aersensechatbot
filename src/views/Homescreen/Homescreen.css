@@ -108,21 +108,59 @@ button {
 
 .tooltip {
     position: absolute;
-    width: 300%;
+    width: auto;
+    width: 220px;
     bottom: 60px;
     right: 20px;
     background-color: #333;
-    color: #000000;
+    color: black;
+    font-weight: 600;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
-.chat-button:hover .tooltip {
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    /* right: 20px;  */
+    border-width: 10px;
+    border-style: solid;
+    margin-top: 10px;
+    border-color: #ffffff transparent transparent transparent; 
+}
+
+.chat-button:hover .tooltip,
+.tooltip.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    animation: showTooltip 3s forwards;
+}
+
+@keyframes showTooltip {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+    }
+    10% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    90% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+    }
 }
