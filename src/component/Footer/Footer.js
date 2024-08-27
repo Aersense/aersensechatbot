@@ -1,16 +1,22 @@
 import React from 'react';
-// import { FaXTwitter, FaInstagram, FaDiscord } from 'react-icons/fa';
+import { FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <footer className="flex flex-col items-center p-5 bg-black text-gray-400 mt-1">
-      <div className="flex space-x-6 mb-4">
-        <a href="/thole" className="hover:text-white">AERSENSE </a>
-        <a href="/my-orders" className="hover:text-white">my orders</a>
-        <a href="/careers" className="hover:text-white">careers</a>
-        <a href="/privacy-policy" className="hover:text-white">privacy policy</a>
-        <a href="/warranty-return" className="hover:text-white">warranty & return</a>
-        <a href="/terms-of-use" className="hover:text-white">terms of use</a>
+      <div className="flex flex-col sm:flex-row space-x-0 sm:space-x-6 mb-4 gap-5">
+        <div className="ml-5">
+          <a href="/thole" className="hover:text-white ml-5">AERSENSE</a>
+          <a href="/my-orders" className="hover:text-white ml-5">my orders</a>
+          <a href="/careers" className="hover:text-white ml-5">careers</a>
+        </div>
+      </div>
+      <div className="flex space-x-4 mb-4">
+        <a href="https://twitter.com" className="hover:text-white">
+          <FaTwitter size={24} />
+        </a>
+        <a href="https://www.instagram.com/aersense_global/" className="hover:text-white" target="_blank" rel="noopener noreferrer">          <FaInstagram size={24} />
+        </a>
       </div>
       <div className="text-sm">
         <p>AERSENSE inc. © 2024</p>
